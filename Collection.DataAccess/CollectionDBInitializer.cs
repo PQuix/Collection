@@ -30,6 +30,8 @@ namespace Collection.DataAccess
             {
                 PieceId = 0001,
                 PieceTitle = "Sharp Ends",
+                PieceAuthor = "Abercrombie, Joe",
+                PieceDescription = "A collection of short stories, set in Joe Abercrombie's First Law universe.",
                 PieceIsbn = "978-0-575-10468-6",
                 Authors = new List<Author>() { author1 }
             };
@@ -38,6 +40,8 @@ namespace Collection.DataAccess
             {
                 PieceId = 0002,
                 PieceTitle = "Best Served Cold",
+                PieceAuthor = "Abercrombie, Joe",
+                PieceDescription = "The first book in the continuation of Abercrombie's First Law series.",
                 PieceIsbn = "978-0-575-08248-9",
                 Authors = new List<Author>() { author1 }
             };
@@ -46,6 +50,8 @@ namespace Collection.DataAccess
             {
                 PieceId = 0003,
                 PieceTitle = "Do Androids Dream of Electric Sheep?",
+                PieceAuthor = "Dick, Philip K.",
+                PieceDescription = "Sick Sci-Fi Shit, Yo!",
                 PieceIsbn = "978-0-575-11676-4",
                 Authors = new List<Author>() { author2 }
             };

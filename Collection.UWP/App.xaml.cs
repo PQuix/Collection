@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Collection.Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -22,6 +26,11 @@ namespace Collection.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        public static Uri BaseUri = new Uri("http://localhost:57994/api/pieces");
+
+        public static Frame RootFrame { get; set; }
+
+        public static Piece Pieces { get; set; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -30,6 +39,24 @@ namespace Collection.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            using (var client = new HttpClient())
+            {
+                var response = "";
+
+                client.MaxResponseContentBufferSize = 266000;
+
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                Task task = Task.Run(async () =>
+                {
+                    response = await client.GetStringAsync(BaseUri);
+                });
+
+                task.Wait();
+
+                Pieces = JsonConvert.DeserializeObject<List<Piece>>(response)[0];
+            }
         }
 
         /// <summary>
@@ -39,16 +66,16 @@ namespace Collection.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            RootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-            if (rootFrame == null)
+            if (RootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
+                RootFrame = new Frame();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+                RootFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -56,21 +83,17 @@ namespace Collection.UWP
                 }
 
                 // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
+                Window.Current.Content = RootFrame;
             }
-
-            if (e.PrelaunchActivated == false)
+            if (RootFrame.Content == null)
             {
-                if (rootFrame.Content == null)
-                {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
-                }
-                // Ensure the current window is active
-                Window.Current.Activate();
+                // When the navigation stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigation
+                // parameter
+                RootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
 
         /// <summary>

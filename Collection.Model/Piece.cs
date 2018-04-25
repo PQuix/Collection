@@ -12,7 +12,11 @@ namespace Collection.Model
 
         public string PieceTitle { get; set; }
 
+        public string PieceAuthor { get; set; }
+
         public string PieceIsbn { get; set; }
+
+        public string PieceDescription { get; set; }
 
         public virtual List<Author> Authors { get; set; }
     }
