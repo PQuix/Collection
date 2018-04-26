@@ -32,7 +32,7 @@ namespace Collection.UWP
             switch ((sender as Button).Content.ToString())
             {
                 case "Create Piece":
-                    App.RootFrame.Navigate(typeof(CreateOrUpdate), true);
+                    App.RootFrame.Navigate(typeof(CreateOrUpdate));
 
                     break;
 
@@ -42,7 +42,7 @@ namespace Collection.UWP
                     break;
 
                 case "Update Piece":
-                    App.RootFrame.Navigate(typeof(CreateOrUpdate), false);
+                    App.RootFrame.Navigate(typeof(Update));
 
                     break;
 

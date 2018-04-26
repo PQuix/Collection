@@ -7,6 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <local:DesignData x:Key="DesignData"/>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Name="viewList">
             <Grid.RowDefinitions>
@@ -14,11 +18,11 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
                 <TextBlock FontSize="25" FontWeight="Bold" HorizontalAlignment="Center">Pieces</TextBlock>
-                <TextBlock HorizontalAlignment="Center">On this page you will see a list of pieces.</TextBlock>
+                <TextBlock HorizontalAlignment="Center">A Display of all existing pieces.</TextBlock>
                 <Button Margin="10, 0, 0, 0" Click="Button_Click">Go Back</Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Margin="0,100,0,-200">
-                <ListView Name="listView" SelectionChanged="ListView_SelectionChanged">
+            <StackPanel d:DataContext="{StaticResource DesignData}" Margin="0,100,0,-200">
+                <ListView ItemsSource="{Binding Pieces}" Name="listView" SelectionChanged="ListView_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="5" Background="AliceBlue" Width="900">
@@ -35,7 +39,7 @@
                                 <TextBlock Text="{Binding PieceAuthor}" Grid.Row="0" Grid.Column="0" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
                                 <TextBlock Text="{Binding PieceIsbn}" Grid.Row="0" Grid.Column="1" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
                                 <TextBlock Text="{Binding PieceTitle}" Grid.Row="1" Grid.Column="0" ></TextBlock>
-                                <TextBlock Text="{Binding PieceDescription}" Grid.Row="1" Grid.Column="1" ></TextBlock>
+                                <TextBlock Text="{Binding PieceDescription}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"></TextBlock>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -31,20 +31,9 @@ namespace Collection.UWP
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (e.Parameter as bool? == false)
-            {
-                var piece = App.Pieces;
-                Id.Text = piece.PieceId.ToString();
-                Title.Text = piece.PieceTitle;
-                Author.Text = piece.PieceAuthor;
-                Isbn.Text = piece.PieceIsbn;
-                Description.Text = piece.PieceDescription;
-            }
-        }
-
+#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
         private async void Button_ClickAsync(object sender, RoutedEventArgs e)
+#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
         {
             if ((sender as Button).Content.ToString() == "Cancel")
             {
@@ -52,14 +41,6 @@ namespace Collection.UWP
 
                 return;
             }
-
-            var existingPiece = new Piece
-            {
-                PieceTitle = Title.Text,
-                PieceAuthor = Author.Text,
-                PieceIsbn = Isbn.Text,
-                PieceDescription = Description.Text
-            };
 
             var newPiece = new Piece
             {
@@ -69,7 +50,7 @@ namespace Collection.UWP
                 PieceDescription = Description.Text
             };
 
-            using (var client = new System.Net.Http.HttpClient())
+            using (var client = new HttpClient())
             {
                 var json = JsonConvert.SerializeObject(newPiece);
                 var buffer = System.Text.Encoding.UTF8.GetBytes(json);

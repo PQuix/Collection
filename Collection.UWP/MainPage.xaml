@@ -13,7 +13,7 @@
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBlock FontSize="30" HorizontalAlignment="Center" FontWeight="Bold">Universal Windows App Using Web API</TextBlock>
+                <TextBlock FontSize="30" HorizontalAlignment="Center" FontWeight="Bold">Main Page</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="10,0,10,0">
                 <Button Margin="0, 10, 0, 0" Click="Button_Click">Create Piece</Button>
