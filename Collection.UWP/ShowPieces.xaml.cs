@@ -87,6 +87,11 @@ namespace Collection.UWP
 
                     break;
 
+                case "Update Piece":
+                    App.RootFrame.Navigate(typeof(CreateOrUpdate));
+
+                    break;
+
                 default:
                     break;
             }

@@ -50,6 +50,7 @@
                 <TextBlock Name="Isbn" FontStyle="Italic"></TextBlock>
                 <Button Click="Button_Click">View Pieces</Button>
                 <Button Click="Button_Click">Delete Piece</Button>
+                <Button Click="Button_Click">Update Piece</Button>
             </StackPanel>
         </Grid>
     </Grid>
