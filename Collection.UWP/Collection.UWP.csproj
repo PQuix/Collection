@@ -103,6 +103,9 @@
       <DependentUpon>DeletePiece.xaml</DependentUpon>
     </Compile>
     <Compile Include="DesignData.cs" />
+    <Compile Include="DisplayPage.xaml.cs">
+      <DependentUpon>DisplayPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeletePiece.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -37,7 +37,7 @@ namespace Collection.UWP
                     break;
 
                 case "My Pieces":
-                    App.RootFrame.Navigate(typeof(ShowPieces));
+                    App.RootFrame.Navigate(typeof(DisplayPage));
 
                     break;
 

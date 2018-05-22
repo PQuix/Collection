@@ -47,7 +47,8 @@ namespace Collection.UWP
                 PieceTitle = Title.Text,
                 PieceAuthor = Author.Text,
                 PieceIsbn = Isbn.Text,
-                PieceDescription = Description.Text
+                PieceDescription = Description.Text,
+                PieceCover = "http://covers.openlibrary.org/b/isbn/" + Isbn.Text + "-M.jpg"
             };
 
             using (var client = new HttpClient())

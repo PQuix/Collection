@@ -33,6 +33,7 @@ namespace Collection.DataAccess
                 PieceAuthor = "Abercrombie, Joe",
                 PieceDescription = "A collection of short stories, set in Joe Abercrombie's First Law universe.",
                 PieceIsbn = "978-0-575-10468-6",
+                PieceCover = "http://covers.openlibrary.org/b/isbn/9780575104686-M.jpg",
                 Authors = new List<Author>() { author1 }
             };
 
@@ -43,6 +44,7 @@ namespace Collection.DataAccess
                 PieceAuthor = "Abercrombie, Joe",
                 PieceDescription = "The first book in the continuation of Abercrombie's First Law series.",
                 PieceIsbn = "978-0-575-08248-9",
+                PieceCover = "http://covers.openlibrary.org/b/isbn/9780575082489-M.jpg",
                 Authors = new List<Author>() { author1 }
             };
 
@@ -53,6 +55,7 @@ namespace Collection.DataAccess
                 PieceAuthor = "Dick, Philip K.",
                 PieceDescription = "Sick Sci-Fi Shit, Yo!",
                 PieceIsbn = "978-0-575-11676-4",
+                PieceCover = "http://covers.openlibrary.org/b/isbn/9780575116764-M.jpg",
                 Authors = new List<Author>() { author2 }
             };
 

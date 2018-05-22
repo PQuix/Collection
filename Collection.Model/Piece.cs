@@ -18,6 +18,8 @@ namespace Collection.Model
 
         public string PieceDescription { get; set; }
 
+        public string PieceCover { get; set; }
+
         public virtual List<Author> Authors { get; set; }
     }
 }
