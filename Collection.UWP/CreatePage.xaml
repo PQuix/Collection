@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Collection.UWP.CreatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Collection.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:DesignData x:Key="DesignData"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <RelativePanel MinWidth="200" Grid.Column="0" Grid.Row="0">
+            <TextBlock Name="Header" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" Text="Add/Edit a literary work" Margin="0,0,0,50" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock Name="Title" Text="Title : " RelativePanel.AlignLeftWith="Header" RelativePanel.Below="Header" Margin="0,0,80,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="TitleBox" Text="{Binding ElementName=aeList, Path=SelectedItem.Title}" PlaceholderText="Name of title" RelativePanel.RightOf="Title" RelativePanel.Below="Header" RelativePanel.AlignRightWith="Header"/>
+            <TextBlock Name="LName" Text="Author : " RelativePanel.AlignLeftWith="Title" RelativePanel.Below="Title" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="lNameBox" Text="{Binding ElementName=aeList, Path=SelectedItem.AuthorLName}" PlaceholderText="Author's Last Name" RelativePanel.RightOf="LName" RelativePanel.Below="Title" RelativePanel.AlignRightWith="TitleBox" RelativePanel.AlignLeftWith="TitleBox"/>
+            <TextBlock Name="FName" Text="" RelativePanel.AlignLeftWith="LName" RelativePanel.Below="LName" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="fNameBox" Text="{Binding ElementName=aeList, Path=SelectedItem.AuthorFName}" PlaceholderText="Author's First name" RelativePanel.RightOf="FName" RelativePanel.Below="LName" RelativePanel.AlignRightWith="lNameBox" RelativePanel.AlignLeftWith="lNameBox"/>
+            <TextBlock Name="Isbn" Text="ISBN : " RelativePanel.AlignLeftWith="FName" RelativePanel.Below="FName" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="IsbnBox" Text="{Binding ElementName=aeList, Path=SelectedItem.Isbn}" PlaceholderText="ISBN - No dashes" RelativePanel.RightOf="Isbn" RelativePanel.Below="FName" RelativePanel.AlignRightWith="fNameBox" RelativePanel.AlignLeftWith="fNameBox"/>
+            <TextBlock Name="Description" Text="Description : " RelativePanel.AlignLeftWith="Isbn" RelativePanel.Below="Isbn" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="DescBox" Text="{Binding ElementName=aeList, Path=SelectedItem.Description}" PlaceholderText="Detailed description" RelativePanel.RightOf="Description" RelativePanel.Below="Isbn" RelativePanel.AlignRightWith="IsbnBox" RelativePanel.AlignLeftWith="IsbnBox"/>
+            <Button Name="AddBtn" RelativePanel.AlignLeftWith="Header" RelativePanel.Below="Description" Width="100" Margin="0,0,0,0" Click="Btn_Click">Add</Button>
+            <Button Name="EditBtn" RelativePanel.RightOf="AddBtn" RelativePanel.AlignHorizontalCenterWith="Header"  RelativePanel.Below="Description" Width="100" Margin="50,0,0,0" Click="Btn_Click">Edit</Button>
+            <Button Name="CancelBtn" RelativePanel.AlignRightWith="Header" RelativePanel.AlignVerticalCenterWith="AddBtn" Width="100" Margin="0,0,0,0" Click="Btn_Click">Cancel</Button>
+        </RelativePanel>
+        <RelativePanel Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <Grid Name="displayGrid">
+                    <StackPanel d:DataContext="{StaticResource DesignData}">
+                        <GridView ItemsSource="{Binding Pieces}" Name="aeList">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <RelativePanel Margin="20,0,20,0" Height="300">
+                                        <Image Name="GridImage" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="150" Source="{Binding Cover}"/>
+                                        <TextBlock Name="GridTitle" FontSize="18" TextWrapping="Wrap" RelativePanel.Below="GridImage" RelativePanel.AlignLeftWithPanel="True" Text="{Binding Title}"/>
+                                        <TextBlock Name="GridAuthor" FontSize="15" TextWrapping="Wrap" RelativePanel.Below="GridTitle" RelativePanel.AlignLeftWithPanel="True" Text="{Binding AuthorName}"/>
+                                    </RelativePanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </RelativePanel>
+    </Grid>
+</Page>

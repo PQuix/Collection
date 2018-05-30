@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="Collection.UWP.UpdatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Collection.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <RelativePanel Grid.Column="0">
+            <TextBlock Name="Header" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Edit existing literary work" Margin="0,0,0,50" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock Name="Title" Text="Title : " RelativePanel.AlignLeftWith="Header" RelativePanel.Below="Header" Margin="0,0,80,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="TitleBox" PlaceholderText="Name of title" RelativePanel.RightOf="Title" RelativePanel.Below="Header" RelativePanel.AlignRightWith="Header" TextChanged="TextChanged"/>
+            <TextBlock Name="Author" Text="Author : " RelativePanel.AlignLeftWith="Title" RelativePanel.Below="Title" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="AuthorBox" PlaceholderText="Lastname, Firstname" RelativePanel.RightOf="Author" RelativePanel.Below="Title" RelativePanel.AlignRightWith="TitleBox" RelativePanel.AlignLeftWith="TitleBox" TextChanged="TextChanged"/>
+            <TextBlock Name="Isbn" Text="ISBN : " RelativePanel.AlignLeftWith="Author" RelativePanel.Below="Author" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="IsbnBox" PlaceholderText="ISBN - No dashes" RelativePanel.RightOf="Isbn" RelativePanel.Below="Author" RelativePanel.AlignRightWith="AuthorBox" RelativePanel.AlignLeftWith="AuthorBox" TextChanged="TextChanged"/>
+            <TextBlock Name="Description" Text="Description : " RelativePanel.AlignLeftWith="Isbn" RelativePanel.Below="Isbn" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="DescBox" PlaceholderText="Detailed description" RelativePanel.RightOf="Description" RelativePanel.Below="Isbn" RelativePanel.AlignRightWith="IsbnBox" RelativePanel.AlignLeftWith="IsbnBox" TextChanged="TextChanged"/>
+            <TextBlock Name="Id" Text="ID : " RelativePanel.AlignLeftWith="Description" RelativePanel.Below="Description" Margin="0,0,0,10" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Name="IdBox" PlaceholderText="Detailed description" RelativePanel.RightOf="Id" RelativePanel.Below="Description" RelativePanel.AlignRightWith="DescBox" RelativePanel.AlignLeftWith="DescBox" TextChanged="TextChanged"/>
+            <!--<TextBlock Name="Type" Text="Type : " RelativePanel.AlignLeftWith="Description" RelativePanel.Below="Description" Margin="0,0,0,50" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <ComboBox Name="TypeCombo" RelativePanel.RightOf="Type" RelativePanel.Below="Description" RelativePanel.AlignLeftWith="DescBox" ItemsSource="{x:Bind Types}" DisplayMemberPath="Source"/>-->
+            <Button Name="UpdateBtn" IsEnabled="False" RelativePanel.AlignLeftWith="Id" RelativePanel.Below="Id" Width="100" Margin="50,0,0,0" Click="Btn_Click">Update</Button>
+            <Button Name="CancelBtn" RelativePanel.AlignRightWith="IdBox" RelativePanel.AlignVerticalCenterWith="UpdateBtn" Width="100" Margin="0,0,50,0" Click="Btn_Click">Cancel</Button>
+        </RelativePanel>
+    </Grid>
+</Page>

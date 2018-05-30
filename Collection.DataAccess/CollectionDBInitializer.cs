@@ -10,57 +10,45 @@ namespace Collection.DataAccess
 {
     public class CollectionDBInitializer : DropCreateDatabaseIfModelChanges<CollectionContext>
     {
+        /// <summary>
+        /// Seeds the database with a couple of Pieces. Used when using the API as Startup and the Database is empty.
+        /// The default implementation does nothing.
+        /// </summary>
+        /// <param name="context">The context to seed.</param>
         protected override void Seed(CollectionContext context)
         {
-            var author1 = new Author()
-            {
-                AuthorId = 10,
-                FirstName = "Joe",
-                LastName = "Abercrombie"
-            };
-
-            var author2 = new Author()
-            {
-                AuthorId = 11,
-                FirstName = "Philip K.",
-                LastName = "Dick"
-            };
-
             var piece1 = new Piece()
             {
                 PieceId = 0001,
-                PieceTitle = "Sharp Ends",
-                PieceAuthor = "Abercrombie, Joe",
-                PieceDescription = "A collection of short stories, set in Joe Abercrombie's First Law universe.",
-                PieceIsbn = "978-0-575-10468-6",
-                PieceCover = "http://covers.openlibrary.org/b/isbn/9780575104686-M.jpg",
-                Authors = new List<Author>() { author1 }
+                Title = "Sharp Ends",
+                AuthorLName = "Abercrombie",
+                AuthorFName = "Joe",
+                Description = "A collection of short stories, set in Joe Abercrombie's First Law universe.",
+                Isbn = "978-0-575-10468-6",
+                Cover = "http://covers.openlibrary.org/b/isbn/9780575104686-M.jpg"
             };
 
             var piece2 = new Piece()
             {
                 PieceId = 0002,
-                PieceTitle = "Best Served Cold",
-                PieceAuthor = "Abercrombie, Joe",
-                PieceDescription = "The first book in the continuation of Abercrombie's First Law series.",
-                PieceIsbn = "978-0-575-08248-9",
-                PieceCover = "http://covers.openlibrary.org/b/isbn/9780575082489-M.jpg",
-                Authors = new List<Author>() { author1 }
+                Title = "Best Served Cold",
+                AuthorLName = "Abercrombie",
+                AuthorFName = "Joe",
+                Description = "The first book in the continuation of Abercrombie's First Law series.",
+                Isbn = "978-0-575-08248-9",
+                Cover = "http://covers.openlibrary.org/b/isbn/9780575082489-M.jpg"
             };
 
             var piece3 = new Piece()
             {
                 PieceId = 0003,
-                PieceTitle = "Do Androids Dream of Electric Sheep?",
-                PieceAuthor = "Dick, Philip K.",
-                PieceDescription = "Sick Sci-Fi Shit, Yo!",
-                PieceIsbn = "978-0-575-11676-4",
-                PieceCover = "http://covers.openlibrary.org/b/isbn/9780575116764-M.jpg",
-                Authors = new List<Author>() { author2 }
+                Title = "Do Androids Dream of Electric Sheep?",
+                AuthorLName = "Dick",
+                AuthorFName = "Philip K.",
+                Description = "Sick Sci-Fi Shit, Yo!",
+                Isbn = "978-0-575-11676-4",
+                Cover = "http://covers.openlibrary.org/b/isbn/9780575116764-M.jpg"
             };
-
-            context.Authors.Add(author1);
-            context.Authors.Add(author2);
 
             context.Pieces.Add(piece1);
             context.Pieces.Add(piece2);

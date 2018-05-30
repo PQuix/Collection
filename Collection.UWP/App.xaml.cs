@@ -26,11 +26,7 @@ namespace Collection.UWP
     /// </summary>
     sealed partial class App : Application
     {
-        public static Uri BaseUri = new Uri("http://localhost:57994/api/pieces");
-
         public static Frame RootFrame { get; set; }
-
-        public static Piece Pieces { get; set; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -39,24 +35,6 @@ namespace Collection.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-            using (var client = new HttpClient())
-            {
-                var response = "";
-
-                client.MaxResponseContentBufferSize = 266000;
-
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                Task task = Task.Run(async () =>
-                {
-                    response = await client.GetStringAsync(BaseUri);
-                });
-
-                task.Wait();
-
-                Pieces = JsonConvert.DeserializeObject<List<Piece>>(response)[0];
-            }
         }
 
         /// <summary>
@@ -90,7 +68,7 @@ namespace Collection.UWP
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                RootFrame.Navigate(typeof(MainPage), e.Arguments);
+                RootFrame.Navigate(typeof(DisplayPage), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

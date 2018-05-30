@@ -10,8 +10,18 @@ namespace Collection.UWP
 {
     public class DesignData
     {
+        /// <summary>
+        /// Gets or sets the pieces.
+        /// </summary>
+        /// <value>
+        /// The pieces.
+        /// </value>
         public ObservableCollection<Piece> Pieces { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DesignData" /> class.
+        /// Creates "sample data" for use in Design mode.
+        /// </summary>
         public DesignData()
         {
             Pieces = new ObservableCollection<Piece>()
@@ -19,29 +29,22 @@ namespace Collection.UWP
                 new Piece()
                 {
                     PieceId = 451,
-                    PieceTitle = "Fahrenheit 451",
-                    PieceAuthor = "Bradbury, Ray",
-                    PieceIsbn = "978-0-00-654606-1",
-                    PieceDescription = "Guy Montag is a fireman. His job is to burn books, which are forbidden, being the source of all discord and unhappiness.",
-                    PieceCover = "http://covers.openlibrary.org/b/isbn/9780006546061-M.jpg"
+                    Title = "Fahrenheit 451",
+                    AuthorLName = "Bradbury",
+                    AuthorFName ="Ray",
+                    Isbn = "978-0-00-654606-1",
+                    Description = "Guy Montag is a fireman. His job is to burn books, which are forbidden, being the source of all discord and unhappiness.",
+                    Cover = "http://covers.openlibrary.org/b/isbn/9780006546061-M.jpg"
                 },
                 new Piece()
                 {
                     PieceId = 7,
-                    PieceTitle = "The Wise Man's Fear",
-                    PieceAuthor = "Rothfuss, Patrick",
-                    PieceIsbn = "978-0-575-08143-7",
-                    PieceDescription = "My name is Kvothe. You may have heard of me.",
-                    PieceCover = "http://covers.openlibrary.org/b/isbn/9780575081437-M.jpg"
-                },
-                new Piece()
-                {
-                    PieceId = 12,
-                    PieceTitle = "Biomega Vol. 2",
-                    PieceAuthor = "Nihei, Tsutomu",
-                    PieceIsbn = "978-1-4215-3185-4",
-                    PieceDescription = "In Tsutomu Nihei's nightmare vision of the future, the N5S virus has swept across the earth, turning most of the population into zombie-like drones.",
-                    PieceCover = "http://covers.openlibrary.org/b/isbn/8791421531854-M.jpg"
+                    Title = "The Wise Man's Fear",
+                    AuthorLName = "Rothfuss",
+                    AuthorFName ="Patrick",
+                    Isbn = "978-0-575-08143-7",
+                    Description = "My name is Kvothe. You may have heard of me.",
+                    Cover = "http://covers.openlibrary.org/b/isbn/9780575081437-M.jpg"
                 }
             };
         }

@@ -20,14 +20,10 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <RelativePanel Grid.Column="0" Grid.RowSpan="4">
-            <Rectangle Name="MenuRow" Fill="DarkGray" Stretch="UniformToFill"/>
-        </RelativePanel>
-        <RelativePanel Grid.Row="2" Grid.Column="1" MinWidth="300">
+        <RelativePanel Grid.Row="2" Grid.Column="0" MinWidth="300">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <Grid Margin="50,0,50,0" Name="displayGrid">
                     <StackPanel d:DataContext="{StaticResource DesignData}">
@@ -35,9 +31,9 @@
                             <GridView.ItemTemplate>
                                 <DataTemplate>
                                     <RelativePanel Margin="20,0,20,0" Height="300">
-                                        <Image Name="GridImage" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="150" Source="{Binding PieceCover}"/>
-                                        <TextBlock Name="GridTitle" FontSize="18" TextWrapping="Wrap" RelativePanel.Below="GridImage" RelativePanel.AlignLeftWithPanel="True" Text="{Binding PieceTitle}"/>
-                                        <TextBlock Name="GridAuthor" FontSize="15" TextWrapping="Wrap" RelativePanel.Below="GridTitle" RelativePanel.AlignLeftWithPanel="True" Text="{Binding PieceAuthor}"/>
+                                        <Image Name="GridImage" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="150" Source="{Binding Cover}"/>
+                                        <TextBlock Name="GridTitle" FontSize="18" TextWrapping="Wrap" RelativePanel.Below="GridImage" RelativePanel.AlignLeftWithPanel="True" Text="{Binding Title}"/>
+                                        <TextBlock Name="GridAuthor" FontSize="15" TextWrapping="Wrap" RelativePanel.Below="GridTitle" RelativePanel.AlignLeftWithPanel="True" Text="{Binding AuthorName}"/>
                                     </RelativePanel>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
@@ -46,15 +42,20 @@
                 </Grid>
             </ScrollViewer>
         </RelativePanel>
-        <RelativePanel Grid.Row="2" Grid.Column="2" MaxWidth="250" MinWidth="188">
+        <RelativePanel Grid.Row="2" Grid.Column="1" MaxWidth="250" MinWidth="250">
             <TextBlock Name="Title" FontSize="20" FontStyle="Italic" TextWrapping="Wrap"/>
             <TextBlock Name="Author" TextWrapping="Wrap" RelativePanel.Below="Title"/>
             <TextBlock Name="Description" TextWrapping="Wrap" RelativePanel.Below="Isbn"/>
             <Image Name="Cover" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Author" MaxHeight="400" MinHeight="300"/>
-            <TextBlock Text="ISBN:" RelativePanel.Below="Cover" RelativePanel.AlignLeftWithPanel="True"/>
+            <TextBlock Name="IsbnText" Text="ISBN:" RelativePanel.Below="Cover" RelativePanel.AlignLeftWithPanel="True" Visibility="Collapsed"/>
             <TextBlock Name="Isbn" TextWrapping="Wrap" RelativePanel.Below="Cover" RelativePanel.AlignRightWith="Cover"/>
-            <Button Name="Update" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="Description" Click="Button_Click">Update Piece</Button>
-            <Button Name="Delete" Margin="10,0,0,0" RelativePanel.RightOf="Update" RelativePanel.Below="Description" Click="Button_Click">Delete Piece</Button>
+            <Button Name="Delete" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="Description" Click="Button_Click" Visibility="Collapsed">Delete Piece</Button>
+        </RelativePanel>
+        <RelativePanel Grid.Column="0" Grid.Row="1">
+            <TextBlock Text="Literary works" FontSize="40" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="50,0,0,0" Style="{StaticResource HeaderTextBlockStyle}"/>
+        </RelativePanel>
+        <RelativePanel Grid.Column="0" Grid.Row="0">
+            <Button RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True" Click="Button_Click">Add / Edit Piece</Button>
         </RelativePanel>
     </Grid>
 </Page>
